@@ -53,11 +53,13 @@ public class GBoard extends JPanel
           case 3:
             b.setColor(Color.BLACK);
             //b.drawOval();
+            b.drawOval(col * space, row * space, col + 1 * space, row + 1 * space);
             break;
             
           case 4:
             b.setColor(Color.RED);
             //b.fillOval();
+            b.drawOval(col * space, row * space, col + 1 * space, row + 1 * space);
             break;
           
           default:
