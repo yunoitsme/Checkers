@@ -9,23 +9,24 @@ import javax.swing.JPanel;
 public class GBoard extends JPanel
 {
   Checkers c = new Checkers();
-  static final int Xmax = 720;
-  static final int Ymax = 720;
-  int space = 90;
+  static final int Dimensions = 800;
+  static final int Xmax = Dimensions + 1;
+  static final int Ymax = Dimensions + 23;
+  int space = Xmax / 8;
   public void paint(Graphics g) 
   {
     Graphics2D b = (Graphics2D) g;
     
     //draw lines to separate board
-    for(int n = 0; n < 8; n++)
+    for(int n = 1; n < 9; n++)
     {
-      int x = (Xmax / 8) * n;
-      b.drawLine(x, 0, x, Ymax);
+      int x = (Dimensions / 8) * n;
+      b.drawLine(x, 0, x, Dimensions);
     }
-    for(int n = 0; n < 8; n++)
+    for(int n = 1; n < 9; n++)
     {
-      int y = (Ymax / 8) * n;
-      b.drawLine(0, y, Xmax, y);
+      int y = (Dimensions / 8) * n;
+      b.drawLine(0, y, Dimensions, y);
     }
     
     //draws pieces
@@ -64,7 +65,7 @@ public class GBoard extends JPanel
           
           default:
             break;
-        }//end switch//
+        }//end switch
       }
     }
   }
