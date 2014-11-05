@@ -64,7 +64,7 @@ public class GBoard extends JPanel
           
           default:
             break;
-        }//end switch
+        }//end switch//
       }
     }
   }
