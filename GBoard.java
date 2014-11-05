@@ -12,7 +12,7 @@ public class GBoard extends JPanel
   static final int Dimensions = 800;
   static final int Xmax = Dimensions + 1;
   static final int Ymax = Dimensions + 23;
-  int space = Xmax / 8;
+  int space = Dimensions / 8;
   public void paint(Graphics g) 
   {
     Graphics2D b = (Graphics2D) g;
@@ -42,25 +42,25 @@ public class GBoard extends JPanel
           case 1:
             b.setColor(Color.BLACK);
             //b.fillOval(row * (Xmax / 8), col * (Xmax / 8), (row + 1) * (Xmax / 8), (col + 1) * (Xmax / 8));
-            b.fillOval(col * space, row * space, col + 1 * space, row + 1 * space);
+            b.fillOval(col * space, row * space, (col + 1 * space) - col, (row + 1 * space) - row);
             break;
             
           case 2:
             b.setColor(Color.RED);
             //b.fillOval();
-            b.fillOval(col * space, row * space, col + 1 * space, row + 1 * space);
+            b.fillOval(col * space, row * space, (col + 1 * space) - col, (row + 1 * space) - row);
             break;
             
           case 3:
             b.setColor(Color.BLACK);
             //b.drawOval();
-            b.drawOval(col * space, row * space, col + 1 * space, row + 1 * space);
+            b.drawOval(col * space, row * space, (col + 1 * space) - col, (row + 1 * space) - row);
             break;
             
           case 4:
             b.setColor(Color.RED);
             //b.fillOval();
-            b.drawOval(col * space, row * space, col + 1 * space, row + 1 * space);
+            b.drawOval(col * space, row * space, (col + 1 * space) - col, (row + 1 * space) - row);
             break;
           
           default:
