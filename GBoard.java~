@@ -15,6 +15,14 @@ public class GBoard extends JPanel
   public void paint(Graphics g) 
   {
     Graphics2D b = (Graphics2D) g;
+    /*
+    b.setColor(Color.BLACK);
+    b.fillOval(0, 0, 30, 30);
+    b.drawOval(0, 50, 30, 30);  
+    b.fillRect(50, 0, 30, 30);
+    b.drawRect(50, 50, 30, 30);
+    b.drawLine(0, 0, 100,100);
+    */
     
     //draw lines to separate board
     for(int n = 0; n < 8; n++)
