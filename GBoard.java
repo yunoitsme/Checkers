@@ -5,6 +5,8 @@ import java.awt.RenderingHints;
 import java.awt.geom.Ellipse2D;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.awt.*;
+import java.awt.event.*;
 /*
  * instead of (row, col)
  * (col, row)
@@ -16,9 +18,9 @@ public class GBoard extends JPanel
   static final int Xmax = Dimensions + 1;
   static final int Ymax = Dimensions + 23;
   int space = Dimensions / 8;
-  static int Row;
-  static int Col;
-  public void paint(Graphics g) 
+  static int Row = -1;
+  static int Col = -1;
+  public void paint(Graphics g)
   {
     Graphics2D b = (Graphics2D) g;
     
@@ -99,8 +101,17 @@ public class GBoard extends JPanel
     frame.setSize(Xmax, Ymax);
     frame.setVisible(true);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    GBoard.SetRow(0);
-    GBoard.SetCol(0);
+    frame.addMouseListener(new MouseAdapter()
+    {
+      public void mousePressed(MouseEvent e)
+      {
+        System.out.println(e.getPoint());
+        Row = e.getX();
+        Col = e.getY();
+      }
+    }
+    );
+    System.out.println(Row);
     frame.repaint();
   }
 }
