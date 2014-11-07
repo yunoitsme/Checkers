@@ -106,12 +106,13 @@ public class GBoard extends JPanel
       public void mousePressed(MouseEvent e)
       {
         System.out.println(e.getPoint());
-        Row = e.getX();
-        Col = e.getY();
+        Row = e.getX() / 10;
+        Col = e.getY() / 10;
+        System.out.println(Row);
+        System.out.println(Col);
       }
     }
     );
-    System.out.println(Row);
     frame.repaint();
   }
 }
