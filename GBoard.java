@@ -5,7 +5,10 @@ import java.awt.RenderingHints;
 import java.awt.geom.Ellipse2D;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
+/*
+ * instead of (row, col)
+ * (col, row)
+ */
 public class GBoard extends JPanel
 {
   Checkers c = new Checkers();
@@ -13,20 +16,29 @@ public class GBoard extends JPanel
   static final int Xmax = Dimensions + 1;
   static final int Ymax = Dimensions + 23;
   int space = Dimensions / 8;
+  static int Row;
+  static int Col;
   public void paint(Graphics g) 
   {
     Graphics2D b = (Graphics2D) g;
     
     //draw lines to separate board
-    for(int n = 1; n < 9; n++)
+    for(int n = 0; n < 9; n++)
     {
       int x = (Dimensions / 8) * n;
       b.drawLine(x, 0, x, Dimensions);
     }
-    for(int n = 1; n < 9; n++)
+    for(int n = 0; n < 9; n++)
     {
       int y = (Dimensions / 8) * n;
       b.drawLine(0, y, Dimensions, y);
+    }
+    
+    //highlight selected piece
+    if(Col != -1 || Row != -1)
+    {
+      b.setColor(Color.yellow);
+      b.fillRect(Col * space, Row * space, (Col + 1 * space) - Col, (Row + 1 * space) - Row);
     }
     
     //draws pieces
@@ -70,6 +82,16 @@ public class GBoard extends JPanel
     }
   }
   
+  public static void SetRow(int row)
+  {
+    Row = row;
+  }
+  
+  public static void SetCol(int col)
+  {
+    Col = col;
+  }
+  
   public static void main(String[] args) 
   {
     JFrame frame = new JFrame("Checkers");
@@ -77,6 +99,9 @@ public class GBoard extends JPanel
     frame.setSize(Xmax, Ymax);
     frame.setVisible(true);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    GBoard.SetRow(0);
+    GBoard.SetCol(0);
+    frame.repaint();
   }
 }
 
