@@ -10,8 +10,6 @@ import javax.swing.*;
 public class Checkers
 {
   Board b;
-  int x = - 1;
-  int y = - 1;
   public Checkers()
   {
     b = new Board();
@@ -272,39 +270,10 @@ public class Checkers
     return b.GetPiece(row, col);
   }
   
-  public void HighlightSpace(int xval, int yval)
-  {
-    x = xval;
-    y = yval;
-  }
-  
-  public void ResetHighlight()
-  {
-    x = -1;
-    y = -1;
-  }
-  
-  public boolean GetHighlightedSpace()
-  {
-    if(x == -1 || y == -1)
-    {
-      return false;
-    }
-    return true;
-  }
-  
-  public int GetHRow()
-  {
-    return x;
-  }
-  
-  public int GetHCol()
-  {
-    return y;
-  }
-  
   public static void main(String args[])
   {
+    GBoard b = new Gboard();
+    /*
     Checkers c = new Checkers();
     c.PrintBoard();
     c.MakeMove(5, 7, 4, 6);

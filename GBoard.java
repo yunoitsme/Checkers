@@ -13,13 +13,11 @@ import java.awt.event.*;
  */
 public class GBoard extends JPanel
 {
-  Checkers c = new Checkers();
+  static Checkers c = new Checkers();
   static final int Dimensions = 800;
   static final int Xmax = Dimensions + 1;
   static final int Ymax = Dimensions + 23;
   int space = Dimensions / 8;
-  static int Row = -1;
-  static int Col = -1;
   public void paint(Graphics g)
   {
     Graphics2D b = (Graphics2D) g;
@@ -37,10 +35,10 @@ public class GBoard extends JPanel
     }
     
     //highlight selected piece
-    if(Col != -1 || Row != -1)
+    if(c.GetHighlightedSpace())
     {
       b.setColor(Color.yellow);
-      b.fillRect(Col * space, Row * space, (Col + 1 * space) - Col, (Row + 1 * space) - Row);
+      b.fillRect((c.GetHCol() * space) + 1, (c.GetHRow() * space) + 1, ((c.GetHCol() + 1 * space) - c.GetHCol()) - 1, ((c.GetHRow() + 1 * space) - c.GetHRow()) - 1);
     }
     
     //draws pieces
@@ -84,16 +82,6 @@ public class GBoard extends JPanel
     }
   }
   
-  public static void SetRow(int row)
-  {
-    Row = row;
-  }
-  
-  public static void SetCol(int col)
-  {
-    Col = col;
-  }
-  
   public static void main(String[] args) 
   {
     JFrame frame = new JFrame("Checkers");
@@ -105,16 +93,21 @@ public class GBoard extends JPanel
     {
       public void mousePressed(MouseEvent e)
       {
+        int col;
+        int row;
         System.out.println(e.getPoint());
-        Row = e.getX() / 10;
-        Col = e.getY() / 10;
-        System.out.println(Row);
-        System.out.println(Col);
+        col = (e.getX() / 10) / 10;
+        row = ((e.getY() / 10) - 2) / 10;
+        c.HighlightSpace(row, col);
+        System.out.println(row);
+        System.out.println(col);
       }
     }
     );
-    frame.repaint();
+    while(true)
+    {
+      frame.repaint();
+    }
+    //frame.repaint();
   }
 }
-
-
