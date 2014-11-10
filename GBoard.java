@@ -82,7 +82,7 @@ public class GBoard extends JPanel
     }
   }
   
-  public static void main(String[] args) 
+  public static void main(String[] args) throws InterruptedException
   {
     JFrame frame = new JFrame("Checkers");
     frame.add(new GBoard());
@@ -98,15 +98,17 @@ public class GBoard extends JPanel
         System.out.println(e.getPoint());
         col = (e.getX() / 10) / 10;
         row = ((e.getY() / 10) - 2) / 10;
-        c.HighlightSpace(row, col);
-        System.out.println(row);
-        System.out.println(col);
+        c.Click(row, col);
+        //System.out.println(row);
+        //System.out.println(col);
       }
     }
     );
     while(true)
     {
       frame.repaint();
+      Thread.sleep(200);
+      //System.out.println("q");
     }
     //frame.repaint();
   }

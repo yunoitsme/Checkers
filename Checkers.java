@@ -303,6 +303,26 @@ public class Checkers
     return y;
   }
   
+  public void Click(int row, int col)
+  {
+    KingMe();
+    if(x == -1 || y == -1)
+    {
+      HighlightSpace(row, col);
+    }else
+    {
+      if(MakeMove(x, y, row, col))
+      {
+        ResetHighlight();
+        MakeMove(x, y, row, col);
+        System.out.println("yes");
+      }else
+      {
+        
+      }
+    }
+  }
+  
   public static void main(String args[])
   {
     Checkers c = new Checkers();
