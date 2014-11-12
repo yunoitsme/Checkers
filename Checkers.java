@@ -177,7 +177,7 @@ public class Checkers
       }
     }//end black king jump
     //check red king jump
-    if(b.GetPiece(row, col) == 4)////////////////////////////////add remove
+    if(b.GetPiece(row, col) == 4)
     {
       if(row + 2 == newrow && col + 2 == newcol && b.GetPiece(row + 1, col + 1) == 1 || row + 2 == newrow && col + 2 == newcol && b.GetPiece(row + 1, col + 1) == 3)
       {
@@ -305,7 +305,6 @@ public class Checkers
   
   public void Click(int row, int col)
   {
-    KingMe();
     if(x == -1 || y == -1)
     {
       HighlightSpace(row, col);
@@ -318,7 +317,10 @@ public class Checkers
         System.out.println("yes");
       }else
       {
-        
+        if(x == row && y == col)
+        {
+          ResetHighlight();
+        }
       }
     }
   }

@@ -106,8 +106,9 @@ public class GBoard extends JPanel
     );
     while(true)
     {
+      c.KingMe();
       frame.repaint();
-      Thread.sleep(200);
+      Thread.sleep(100);
       //System.out.println("q");
     }
     //frame.repaint();
