@@ -1,4 +1,4 @@
-/*v1.1
+/*v1.1.1
  * 0 = empty
  * 1 = black
  * 2 = red
@@ -302,6 +302,54 @@ public class Checkers
   public int GetHCol()
   {
     return y;
+  }
+  
+  public boolean GameOver()
+  {
+    if(NoBlack() || NoRed())
+    {
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean RedWon()
+  {
+    if(NoRed())
+    {
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean NoRed()
+  {
+    for(int row = 0; row < 8; row++)
+    {
+      for(int col = 0; col < 8; col++)
+      {
+        if(b.GetPiece(row, col) == 2 || b.GetPiece(row, col) == 4)
+        {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  
+  public boolean NoBlack()
+  {
+    for(int row = 0; row < 8; row++)
+    {
+      for(int col = 0; col < 8; col++)
+      {
+        if(b.GetPiece(row, col) == 1 || b.GetPiece(row, col) == 3)
+        {
+          return false;
+        }
+      }
+    }
+    return true;
   }
   
   public void Click(int row, int col)

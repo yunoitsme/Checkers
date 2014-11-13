@@ -1,4 +1,4 @@
-/*
+/*v1.1
  * 0 = empty
  * 1 = black
  * 2 = red
@@ -12,6 +12,7 @@ public class Checkers
   Board b;
   int x = - 1;
   int y = - 1;
+  boolean RedTurn = true;
   public Checkers()
   {
     b = new Board();
@@ -305,7 +306,55 @@ public class Checkers
   
   public void Click(int row, int col)
   {
-    KingMe();
+    if(RedTurn)
+    {
+      if(x == -1 || y == -1)
+      {
+        if(b.GetPiece(row , col) == 2 || b.GetPiece(row , col) == 4)
+        {
+          HighlightSpace(row, col);
+        }
+      }else
+      {
+        if(MakeMove(x, y, row, col))
+        {
+          RedTurn = false;
+          ResetHighlight();
+          MakeMove(x, y, row, col);
+        }else
+        {
+          if(x == row && y == col)
+          {
+            ResetHighlight();
+          }
+        }
+      }
+    }else
+    {
+      if(x == -1 || y == -1)
+      {
+        if(b.GetPiece(row , col) == 1 || b.GetPiece(row , col) == 3)
+        {
+          HighlightSpace(row, col);
+        }
+      }else
+      {
+        if(MakeMove(x, y, row, col))
+        {
+          RedTurn = true;
+          ResetHighlight();
+          MakeMove(x, y, row, col);
+        }else
+        {
+          if(x == row && y == col)
+          {
+            ResetHighlight();
+          }
+        }
+      }
+    }
+    //here to copy into new turn detecting format
+    /*
     if(x == -1 || y == -1)
     {
       HighlightSpace(row, col);
@@ -318,9 +367,13 @@ public class Checkers
         System.out.println("yes");
       }else
       {
-        
+        if(x == row && y == col)
+        {
+          ResetHighlight();
+        }
       }
     }
+    */
   }
   
   public static void main(String args[])
