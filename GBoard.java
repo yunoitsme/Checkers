@@ -1,4 +1,4 @@
-//v1.1
+//v1.1.1
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -109,6 +109,17 @@ public class GBoard extends JPanel
     {
       c.KingMe();
       frame.repaint();
+      if(c.GameOver())
+      {
+        if(c.NoRed())
+        {
+          System.out.println("Black won");
+        }else
+        {
+          System.out.println("red won");
+        }
+        System.exit(0);
+      }
       Thread.sleep(100);
       //System.out.println("q");
     }
