@@ -504,9 +504,9 @@ public class Checkers
   {
     if(NoRed())
     {
-      return true;
+      return false;
     }
-    return false;
+    return true;
   }
   
   public boolean NoRed()
@@ -609,6 +609,34 @@ public class Checkers
       }
     }
     */
+  }
+  //for gui testing 
+  public void RemoveAllRed()
+  {
+    for(int row = 0; row < 8; row++)
+    {
+      for(int col = 0; col < 8; col++)
+      {
+        if(b.GetPiece(row, col) == 2)
+        {
+          b.Remove(row, col);
+        }
+      }
+    }
+  }
+  //for gui testing
+  public void RemoveAllBlack()
+  {
+    for(int row = 0; row < 8; row++)
+    {
+      for(int col = 0; col < 8; col++)
+      {
+        if(b.GetPiece(row, col) == 1)
+        {
+          b.Remove(row, col);
+        }
+      }
+    }
   }
   
   public static void main(String args[])
