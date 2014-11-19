@@ -1,4 +1,4 @@
-//v1.1.1
+//v1.1.3
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -30,12 +30,26 @@ public class GBoard extends JPanel
       {
         b.setColor(Color.RED);
         b.setFont(red);
-        b.drawString("Red Won!", 200, 400);
+        b.drawString("Red Won!", 200, 300);
+        b.setColor(Color.BLACK);
+        b.drawString("Play Again?", 160, 500);
+        //ask for a new game 
+        b.drawLine(0, 600, 800, 600);
+        b.drawLine(400, 600, 400, 800);
+        b.drawString("Yes", 120, 730);
+        b.drawString("No", 540, 730);
       }else
       {
         b.setColor(Color.BLACK);
         b.setFont(red);
-        b.drawString("Black Won!", 170, 400);
+        b.drawString("Black Won!", 170, 300);
+        b.setColor(Color.BLACK);
+        b.drawString("Play Again?", 160, 500);
+        //ask for a new game 
+        b.drawLine(0, 600, 800, 600);
+        b.drawLine(400, 600, 400, 800);
+        b.drawString("Yes", 120, 730);
+        b.drawString("No", 540, 730);
       }
     }else
     {
@@ -126,7 +140,7 @@ public class GBoard extends JPanel
     );
     while(true)
     {
-      c.RemoveAllBlack();
+      c.RemoveAllRed();
       c.KingMe();
       frame.repaint();
       /*if(c.GameOver())
