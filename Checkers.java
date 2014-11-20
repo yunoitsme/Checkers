@@ -1,4 +1,4 @@
-/*v1.1.1
+/*v1.2.0
  * 0 = empty
  * 1 = black
  * 2 = red
@@ -206,28 +206,36 @@ public class Checkers
     if(b.GetPiece(row, col) == 1)
     {
       if(row - 4 == newrow && col + 4 == newcol && b.GetPiece(row - 1, col + 1) == 2 && b.GetPiece(row - 3, col + 3) == 2 && b.GetPiece(row - 2, col + 2) == 0 ||
-         row - 4 == newrow && col + 4 == newcol && b.GetPiece(row - 1, col + 1) == 4 && b.GetPiece(row - 3, col + 3) == 4 && b.GetPiece(row - 2, col + 2) == 0)
+         row - 4 == newrow && col + 4 == newcol && b.GetPiece(row - 1, col + 1) == 4 && b.GetPiece(row - 3, col + 3) == 4 && b.GetPiece(row - 2, col + 2) == 0 ||
+         row - 4 == newrow && col + 4 == newcol && b.GetPiece(row - 1, col + 1) == 2 && b.GetPiece(row - 3, col + 3) == 4 && b.GetPiece(row - 2, col + 2) == 0 ||
+         row - 4 == newrow && col + 4 == newcol && b.GetPiece(row - 1, col + 1) == 4 && b.GetPiece(row - 3, col + 3) == 2 && b.GetPiece(row - 2, col + 2) == 0)
       {
         b.Remove(row - 1, col + 1);
         b.Remove(row - 3, col + 3);
         return true;
       }
       if(row - 4 == newrow && col - 4 == newcol && b.GetPiece(row - 1, col - 1) == 2 && b.GetPiece(row - 3, col - 3) == 2 && b.GetPiece(row - 2, col - 2) == 0 ||
-         row - 4 == newrow && col - 4 == newcol && b.GetPiece(row - 1, col - 1) == 4 && b.GetPiece(row - 3, col - 3) == 4 && b.GetPiece(row - 2, col - 2) == 0)
+         row - 4 == newrow && col - 4 == newcol && b.GetPiece(row - 1, col - 1) == 4 && b.GetPiece(row - 3, col - 3) == 4 && b.GetPiece(row - 2, col - 2) == 0 ||
+         row - 4 == newrow && col - 4 == newcol && b.GetPiece(row - 1, col - 1) == 2 && b.GetPiece(row - 3, col - 3) == 4 && b.GetPiece(row - 2, col - 2) == 0 ||
+         row - 4 == newrow && col - 4 == newcol && b.GetPiece(row - 1, col - 1) == 4 && b.GetPiece(row - 3, col - 3) == 2 && b.GetPiece(row - 2, col - 2) == 0)
       {  
         b.Remove(row - 1, col - 1);
         b.Remove(row - 3, col - 3);
         return true;
       }
       if(row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col + 1) == 2 && b.GetPiece(row - 3, col + 1) == 2 && b.GetPiece(row - 2, col + 2) == 0 ||
-         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col + 1) == 4 && b.GetPiece(row - 3, col + 1) == 4 && b.GetPiece(row - 2, col + 2) == 0)
+         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col + 1) == 4 && b.GetPiece(row - 3, col + 1) == 4 && b.GetPiece(row - 2, col + 2) == 0 ||
+         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col + 1) == 2 && b.GetPiece(row - 3, col + 1) == 4 && b.GetPiece(row - 2, col + 2) == 0 ||
+         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col + 1) == 4 && b.GetPiece(row - 3, col + 1) == 2 && b.GetPiece(row - 2, col + 2) == 0)
       {
         b.Remove(row - 1, col + 1);
         b.Remove(row - 3, col + 1);
         return true;
       }
       if(row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col - 1) == 2 && b.GetPiece(row - 3, col - 1) == 2 && b.GetPiece(row - 2, col - 2) == 0 ||
-         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col - 1) == 4 && b.GetPiece(row - 3, col - 1) == 4 && b.GetPiece(row - 2, col - 2) == 0)
+         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col - 1) == 4 && b.GetPiece(row - 3, col - 1) == 4 && b.GetPiece(row - 2, col - 2) == 0 ||
+         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col - 1) == 2 && b.GetPiece(row - 3, col - 1) == 4 && b.GetPiece(row - 2, col - 2) == 0 ||
+         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col - 1) == 4 && b.GetPiece(row - 3, col - 1) == 2 && b.GetPiece(row - 2, col - 2) == 0)
       {
         b.Remove(row - 1, col - 1);
         b.Remove(row - 3, col - 1);
@@ -270,56 +278,72 @@ public class Checkers
     if(b.GetPiece(row, col) == 3)
     {
       if(row - 4 == newrow && col + 4 == newcol && b.GetPiece(row - 1, col + 1) == 2 && b.GetPiece(row - 3, col + 3) == 2 && b.GetPiece(row - 2, col + 2) == 0 ||
-         row - 4 == newrow && col + 4 == newcol && b.GetPiece(row - 1, col + 1) == 4 && b.GetPiece(row - 3, col + 3) == 4 && b.GetPiece(row - 2, col + 2) == 0)
+         row - 4 == newrow && col + 4 == newcol && b.GetPiece(row - 1, col + 1) == 4 && b.GetPiece(row - 3, col + 3) == 4 && b.GetPiece(row - 2, col + 2) == 0 ||
+         row - 4 == newrow && col + 4 == newcol && b.GetPiece(row - 1, col + 1) == 2 && b.GetPiece(row - 3, col + 3) == 4 && b.GetPiece(row - 2, col + 2) == 0 ||
+         row - 4 == newrow && col + 4 == newcol && b.GetPiece(row - 1, col + 1) == 4 && b.GetPiece(row - 3, col + 3) == 2 && b.GetPiece(row - 2, col + 2) == 0)
       {
         b.Remove(row - 1, col + 1);
         b.Remove(row - 3, col + 3);
         return true;
       }
       if(row - 4 == newrow && col - 4 == newcol && b.GetPiece(row - 1, col - 1) == 2 && b.GetPiece(row - 3, col - 3) == 2 && b.GetPiece(row - 2, col - 2) == 0 ||
-         row - 4 == newrow && col - 4 == newcol && b.GetPiece(row - 1, col - 1) == 4 && b.GetPiece(row - 3, col - 3) == 4 && b.GetPiece(row - 2, col - 2) == 0)
+         row - 4 == newrow && col - 4 == newcol && b.GetPiece(row - 1, col - 1) == 4 && b.GetPiece(row - 3, col - 3) == 4 && b.GetPiece(row - 2, col - 2) == 0 ||
+         row - 4 == newrow && col - 4 == newcol && b.GetPiece(row - 1, col - 1) == 2 && b.GetPiece(row - 3, col - 3) == 4 && b.GetPiece(row - 2, col - 2) == 0 ||
+         row - 4 == newrow && col - 4 == newcol && b.GetPiece(row - 1, col - 1) == 4 && b.GetPiece(row - 3, col - 3) == 2 && b.GetPiece(row - 2, col - 2) == 0)
       {  
         b.Remove(row - 1, col - 1);
         b.Remove(row - 3, col - 3);
         return true;
       }
       if(row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col + 1) == 2 && b.GetPiece(row - 3, col + 1) == 2 && b.GetPiece(row - 2, col + 2) == 0 ||
-         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col + 1) == 4 && b.GetPiece(row - 3, col + 1) == 4 && b.GetPiece(row - 2, col + 2) == 0)
+         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col + 1) == 4 && b.GetPiece(row - 3, col + 1) == 4 && b.GetPiece(row - 2, col + 2) == 0 ||
+         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col + 1) == 2 && b.GetPiece(row - 3, col + 1) == 4 && b.GetPiece(row - 2, col + 2) == 0 ||
+         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col + 1) == 4 && b.GetPiece(row - 3, col + 1) == 2 && b.GetPiece(row - 2, col + 2) == 0)
       {
         b.Remove(row - 1, col + 1);
         b.Remove(row - 3, col + 1);
         return true;
       }
       if(row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col - 1) == 2 && b.GetPiece(row - 3, col - 1) == 2 && b.GetPiece(row - 2, col - 2) == 0 ||
-         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col - 1) == 4 && b.GetPiece(row - 3, col - 1) == 4 && b.GetPiece(row - 2, col - 2) == 0)
+         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col - 1) == 4 && b.GetPiece(row - 3, col - 1) == 4 && b.GetPiece(row - 2, col - 2) == 0 ||
+         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col - 1) == 2 && b.GetPiece(row - 3, col - 1) == 4 && b.GetPiece(row - 2, col - 2) == 0 ||
+         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col - 1) == 4 && b.GetPiece(row - 3, col - 1) == 2 && b.GetPiece(row - 2, col - 2) == 0)
       {
         b.Remove(row - 1, col - 1);
         b.Remove(row - 3, col - 1);
         return true;
       }
       if(row + 4 == newrow && col + 4 == newcol && b.GetPiece(row + 1, col + 1) == 2 && b.GetPiece(row + 3, col + 3) == 2 && b.GetPiece(row + 2, col + 2) == 0 ||
-         row + 4 == newrow && col + 4 == newcol && b.GetPiece(row + 1, col + 1) == 4 && b.GetPiece(row + 3, col + 3) == 4 && b.GetPiece(row + 2, col + 2) == 0)
+         row + 4 == newrow && col + 4 == newcol && b.GetPiece(row + 1, col + 1) == 4 && b.GetPiece(row + 3, col + 3) == 4 && b.GetPiece(row + 2, col + 2) == 0 ||
+         row + 4 == newrow && col + 4 == newcol && b.GetPiece(row + 1, col + 1) == 2 && b.GetPiece(row + 3, col + 3) == 4 && b.GetPiece(row + 2, col + 2) == 0 ||
+         row + 4 == newrow && col + 4 == newcol && b.GetPiece(row + 1, col + 1) == 4 && b.GetPiece(row + 3, col + 3) == 2 && b.GetPiece(row + 2, col + 2) == 0)
       {
         b.Remove(row + 1, col + 1);
         b.Remove(row + 3, col + 3);
         return true;
       }
       if(row + 4 == newrow && col - 4 == newcol && b.GetPiece(row + 1, col - 1) == 2 && b.GetPiece(row + 3, col - 3) == 2 && b.GetPiece(row + 2, col - 2) == 0 ||
-         row + 4 == newrow && col - 4 == newcol && b.GetPiece(row + 1, col - 1) == 4 && b.GetPiece(row + 3, col - 3) == 4 && b.GetPiece(row + 2, col - 2) == 0)
+         row + 4 == newrow && col - 4 == newcol && b.GetPiece(row + 1, col - 1) == 4 && b.GetPiece(row + 3, col - 3) == 4 && b.GetPiece(row + 2, col - 2) == 0 ||
+         row + 4 == newrow && col - 4 == newcol && b.GetPiece(row + 1, col - 1) == 2 && b.GetPiece(row + 3, col - 3) == 4 && b.GetPiece(row + 2, col - 2) == 0 ||
+         row + 4 == newrow && col - 4 == newcol && b.GetPiece(row + 1, col - 1) == 4 && b.GetPiece(row + 3, col - 3) == 2 && b.GetPiece(row + 2, col - 2) == 0)
       {  
         b.Remove(row + 1, col - 1);
         b.Remove(row + 3, col - 3);
         return true;
       }
       if(row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col + 1) == 2 && b.GetPiece(row + 3, col + 1) == 2 && b.GetPiece(row + 2, col + 2) == 0 ||
-         row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col + 1) == 4 && b.GetPiece(row + 3, col + 1) == 4 && b.GetPiece(row + 2, col + 2) == 0)
+         row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col + 1) == 4 && b.GetPiece(row + 3, col + 1) == 4 && b.GetPiece(row + 2, col + 2) == 0 ||
+         row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col + 1) == 2 && b.GetPiece(row + 3, col + 1) == 4 && b.GetPiece(row + 2, col + 2) == 0 ||
+         row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col + 1) == 4 && b.GetPiece(row + 3, col + 1) == 2 && b.GetPiece(row + 2, col + 2) == 0)
       {
         b.Remove(row + 1, col + 1);
         b.Remove(row + 3, col + 1);
         return true;
       }
       if(row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col - 1) == 2 && b.GetPiece(row + 3, col - 1) == 2 && b.GetPiece(row + 2, col - 2) == 0 ||
-         row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col - 1) == 4 && b.GetPiece(row + 3, col - 1) == 4 && b.GetPiece(row + 2, col - 2) == 0)
+         row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col - 1) == 4 && b.GetPiece(row + 3, col - 1) == 4 && b.GetPiece(row + 2, col - 2) == 0 ||
+         row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col - 1) == 2 && b.GetPiece(row + 3, col - 1) == 4 && b.GetPiece(row + 2, col - 2) == 0 ||
+         row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col - 1) == 4 && b.GetPiece(row + 3, col - 1) == 2 && b.GetPiece(row + 2, col - 2) == 0)
       {
         b.Remove(row + 1, col - 1);
         b.Remove(row + 3, col - 1);
@@ -330,56 +354,72 @@ public class Checkers
     if(b.GetPiece(row, col) == 4)
     {
       if(row - 4 == newrow && col + 4 == newcol && b.GetPiece(row - 1, col + 1) == 1 && b.GetPiece(row - 3, col + 3) == 1 && b.GetPiece(row - 2, col + 2) == 0 ||
-         row - 4 == newrow && col + 4 == newcol && b.GetPiece(row - 1, col + 1) == 3 && b.GetPiece(row - 3, col + 3) == 3 && b.GetPiece(row - 2, col + 2) == 0)
+         row - 4 == newrow && col + 4 == newcol && b.GetPiece(row - 1, col + 1) == 3 && b.GetPiece(row - 3, col + 3) == 3 && b.GetPiece(row - 2, col + 2) == 0 ||
+         row - 4 == newrow && col + 4 == newcol && b.GetPiece(row - 1, col + 1) == 1 && b.GetPiece(row - 3, col + 3) == 3 && b.GetPiece(row - 2, col + 2) == 0 ||
+         row - 4 == newrow && col + 4 == newcol && b.GetPiece(row - 1, col + 1) == 3 && b.GetPiece(row - 3, col + 1) == 1 && b.GetPiece(row - 2, col + 2) == 0)
       {
         b.Remove(row - 1, col + 1);
         b.Remove(row - 3, col + 3);
         return true;
       }
       if(row - 4 == newrow && col - 4 == newcol && b.GetPiece(row - 1, col - 1) == 1 && b.GetPiece(row - 3, col - 3) == 1 && b.GetPiece(row - 2, col - 2) == 0 ||
-         row - 4 == newrow && col - 4 == newcol && b.GetPiece(row - 1, col - 1) == 3 && b.GetPiece(row - 3, col - 3) == 3 && b.GetPiece(row - 2, col - 2) == 0)
+         row - 4 == newrow && col - 4 == newcol && b.GetPiece(row - 1, col - 1) == 3 && b.GetPiece(row - 3, col - 3) == 3 && b.GetPiece(row - 2, col - 2) == 0 ||
+         row - 4 == newrow && col - 4 == newcol && b.GetPiece(row - 1, col - 1) == 1 && b.GetPiece(row - 3, col - 3) == 3 && b.GetPiece(row - 2, col - 2) == 0 ||
+         row - 4 == newrow && col - 4 == newcol && b.GetPiece(row - 1, col - 1) == 3 && b.GetPiece(row - 3, col - 3) == 1 && b.GetPiece(row - 2, col - 2) == 0)
       {  
         b.Remove(row - 1, col - 1);
         b.Remove(row - 3, col - 3);
         return true;
       }
       if(row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col + 1) == 1 && b.GetPiece(row - 3, col + 1) == 1 && b.GetPiece(row - 2, col + 2) == 0 ||
-         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col + 1) == 3 && b.GetPiece(row - 3, col + 1) == 3 && b.GetPiece(row - 2, col + 2) == 0)
+         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col + 1) == 3 && b.GetPiece(row - 3, col + 1) == 3 && b.GetPiece(row - 2, col + 2) == 0 ||
+         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col + 1) == 1 && b.GetPiece(row - 3, col + 1) == 3 && b.GetPiece(row - 2, col + 2) == 0 ||
+         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col + 1) == 3 && b.GetPiece(row - 3, col + 1) == 1 && b.GetPiece(row - 2, col + 2) == 0)
       {
         b.Remove(row - 1, col + 1);
         b.Remove(row - 3, col + 1);
         return true;
       }
       if(row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col - 1) == 1 && b.GetPiece(row - 3, col - 1) == 1 && b.GetPiece(row - 2, col - 2) == 0 ||
-         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col - 1) == 3 && b.GetPiece(row - 3, col - 1) == 3 && b.GetPiece(row - 2, col - 2) == 0)
+         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col - 1) == 3 && b.GetPiece(row - 3, col - 1) == 3 && b.GetPiece(row - 2, col - 2) == 0 ||
+         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col - 1) == 1 && b.GetPiece(row - 3, col - 1) == 3 && b.GetPiece(row - 2, col - 2) == 0 ||
+         row - 4 == newrow && col == newcol && b.GetPiece(row - 1, col - 1) == 3 && b.GetPiece(row - 3, col - 1) == 1 && b.GetPiece(row - 2, col - 2) == 0)
       {
         b.Remove(row - 1, col - 1);
         b.Remove(row - 3, col - 1);
         return true;
       }
       if(row + 4 == newrow && col + 4 == newcol && b.GetPiece(row + 1, col + 1) == 1 && b.GetPiece(row + 3, col + 3) == 1 && b.GetPiece(row + 2, col + 2) == 0 ||
-         row + 4 == newrow && col + 4 == newcol && b.GetPiece(row + 1, col + 1) == 3 && b.GetPiece(row + 3, col + 3) == 3 && b.GetPiece(row + 2, col + 2) == 0)
+         row + 4 == newrow && col + 4 == newcol && b.GetPiece(row + 1, col + 1) == 3 && b.GetPiece(row + 3, col + 3) == 3 && b.GetPiece(row + 2, col + 2) == 0 ||
+         row + 4 == newrow && col + 4 == newcol && b.GetPiece(row + 1, col + 1) == 1 && b.GetPiece(row + 3, col + 3) == 3 && b.GetPiece(row + 2, col + 2) == 0 ||
+         row + 4 == newrow && col + 4 == newcol && b.GetPiece(row + 1, col + 1) == 3 && b.GetPiece(row + 3, col + 3) == 1 && b.GetPiece(row + 2, col + 2) == 0)
       {
         b.Remove(row + 1, col + 1);
         b.Remove(row + 3, col + 3);
         return true;
       }
       if(row + 4 == newrow && col - 4 == newcol && b.GetPiece(row + 1, col - 1) == 1 && b.GetPiece(row + 3, col - 3) == 1 && b.GetPiece(row + 2, col - 2) == 0 ||
-         row + 4 == newrow && col - 4 == newcol && b.GetPiece(row + 1, col - 1) == 3 && b.GetPiece(row + 3, col - 3) == 3 && b.GetPiece(row + 2, col - 2) == 0)
+         row + 4 == newrow && col - 4 == newcol && b.GetPiece(row + 1, col - 1) == 3 && b.GetPiece(row + 3, col - 3) == 3 && b.GetPiece(row + 2, col - 2) == 0 ||
+         row + 4 == newrow && col - 4 == newcol && b.GetPiece(row + 1, col - 1) == 1 && b.GetPiece(row + 3, col - 3) == 3 && b.GetPiece(row + 2, col - 2) == 0 ||
+         row + 4 == newrow && col - 4 == newcol && b.GetPiece(row + 1, col - 1) == 3 && b.GetPiece(row + 3, col - 3) == 1 && b.GetPiece(row + 2, col - 2) == 0)
       {  
         b.Remove(row + 1, col - 1);
         b.Remove(row + 3, col - 3);
         return true;
       }
       if(row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col + 1) == 1 && b.GetPiece(row + 3, col + 1) == 1 && b.GetPiece(row + 2, col + 2) == 0 ||
-         row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col + 1) == 3 && b.GetPiece(row + 3, col + 1) == 3 && b.GetPiece(row + 2, col + 2) == 0)
+         row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col + 1) == 3 && b.GetPiece(row + 3, col + 1) == 3 && b.GetPiece(row + 2, col + 2) == 0 ||
+         row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col + 1) == 1 && b.GetPiece(row + 3, col + 1) == 3 && b.GetPiece(row + 2, col + 2) == 0 ||
+         row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col + 1) == 3 && b.GetPiece(row + 3, col + 1) == 1 && b.GetPiece(row + 2, col + 2) == 0)
       {
         b.Remove(row + 1, col + 1);
         b.Remove(row + 3, col + 1);
         return true;
       }
       if(row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col - 1) == 1 && b.GetPiece(row + 3, col - 1) == 1 && b.GetPiece(row + 2, col - 2) == 0 ||
-         row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col - 1) == 3 && b.GetPiece(row + 3, col - 1) == 3 && b.GetPiece(row + 2, col - 2) == 0)
+         row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col - 1) == 3 && b.GetPiece(row + 3, col - 1) == 3 && b.GetPiece(row + 2, col - 2) == 0 ||
+         row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col - 1) == 1 && b.GetPiece(row + 3, col - 1) == 3 && b.GetPiece(row + 2, col - 2) == 0 ||
+         row + 4 == newrow && col == newcol && b.GetPiece(row + 1, col - 1) == 3 && b.GetPiece(row + 3, col - 1) == 1 && b.GetPiece(row + 2, col - 2) == 0)
       {
         b.Remove(row + 1, col - 1);
         b.Remove(row + 3, col - 1);
