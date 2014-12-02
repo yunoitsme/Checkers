@@ -4,6 +4,10 @@
  * 2 = red
  * 3 = black king
  * 4 = red king
+ * 
+ * add triple jump and put in sound bite of oh baby a triple to play when tripple jump occures 
+ * add a path confirmation for  the double/ triple
+ * add adjusting window size.
  */
 //get rid of after game strucure test
 import javax.swing.*;
@@ -102,7 +106,7 @@ public class Checkers
     //check red jump
     if(b.GetPiece(row,  col) == 2)
     {
-      if(row + 2 == newrow && col + 2 == newcol && b.GetPiece(row + 1, col + 1) == 1 || row - 2 == newrow && col + 2 == newcol && b.GetPiece(row + 1, col + 1) == 1)
+      if(row + 2 == newrow && col + 2 == newcol && b.GetPiece(row + 1, col + 1) == 1 || row - 2 == newrow && col + 2 == newcol && b.GetPiece(row + 1, col + 1) == 3)
       {
         b.Remove(row + 1, col + 1);
         return true;

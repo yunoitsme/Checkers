@@ -1,4 +1,4 @@
-//v1.1.3
+//v1.2.0
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -129,12 +129,24 @@ public class GBoard extends JPanel
       {
         int col;
         int row;
-        System.out.println(e.getPoint());
-        col = (e.getX() / 10) / 10;
-        row = ((e.getY() / 10) - 2) / 10;
-        c.Click(row, col);
-        //System.out.println(row);
-        //System.out.println(col);
+        if(c.GameOver())
+        {
+          if(e.getX() < 400 && e.getY() > 600)
+          {
+            c = new Checkers();
+          }else
+          {
+            System.exit(0);
+          }
+        }else
+        {
+          //System.out.println(e.getPoint());
+          col = (e.getX() / 10) / 10;
+          row = ((e.getY() / 10) - 2) / 10;
+          c.Click(row, col);
+          //System.out.println(row);
+          //System.out.println(col);
+        }
       }
     }
     );
