@@ -7,28 +7,23 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-public class CheckersServer extends Thread
+public class CheckersServer
 {
-  private ServerSocket s;
-  
-  public CheckersServer() throws IOException
+  public static void main(String argv[]) throws Exception
   {
-    s = new ServerSocket(50000);
-  }
-  
-  public void run()
-  {
+    String clientSentence;
+    String capitalizedSentence;
+    ServerSocket welcomeSocket = new ServerSocket(6789);
+
     while(true)
     {
-      try
-      {
-        
-      }
-      catch(IOException e)
-      {
-        System.out.println(e.getMessage());
-      }
+      Socket connectionSocket = welcomeSocket.accept();//accepts connection
+      BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));//reads information from client
+      DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
+      clientSentence = inFromClient.readLine();
+      System.out.println("Received: " + clientSentence);//printd
+      capitalizedSentence = clientSentence.toUpperCase() + '\n';//makes upper case
+      outToClient.writeBytes(capitalizedSentence);//sends information back to client
     }
   }
-  
 }

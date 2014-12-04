@@ -1,4 +1,4 @@
-//v1.1
+//v1.2.0
 public class Board
 {
   private int[][] GameBoard;

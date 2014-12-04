@@ -1,4 +1,8 @@
 //v1.2.0
+/*
+ * this will mostlikely be transformed into the client
+ * have server hold and sen information to client
+ */
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
