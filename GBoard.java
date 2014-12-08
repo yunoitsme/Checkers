@@ -1,4 +1,4 @@
-//v1.5.0
+//v1.6.0
 /*
  * this will mostlikely be transformed into the client
  * have server hold and sen information to client
@@ -24,6 +24,17 @@ public class GBoard extends JPanel
   static final int Xmax = Dimensions + 1;
   static final int Ymax = Dimensions + 23;
   int space = Dimensions / 8;
+  
+  public GBoard()
+  {
+    
+  }//default
+  
+  public GBoard(Checkers checkers)
+  {
+    c = checkers;
+  }//creating with checkers object already created
+  
   public void paint(Graphics g)
   {
     Graphics2D b = (Graphics2D) g;

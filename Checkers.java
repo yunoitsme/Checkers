@@ -1,4 +1,4 @@
-/*v1.5.0
+/*v1.6.0
  * 0 = empty
  * 1 = black
  * 2 = red
@@ -17,6 +17,45 @@ public class Checkers
   int x = - 1;
   int y = - 1;
   boolean RedTurn = true;
+  
+  public Checkers(Board board)
+  {
+    b = board;
+    //fill with red
+    int z = 0;
+    for(int row = 0; row < 3; row++)
+    {
+      for(int col = z; col < 8; col+= 2)
+      {
+        b.Put(row, col, 2);
+      }
+      
+      if(z == 0)
+      {
+        z++;
+      }else
+      {
+        z--;
+      }
+    }//end adding red
+    //fill with black
+    for(int row = 5; row < 8; row++)
+    {
+      for(int col = z; col < 8; col+= 2)
+      {
+        b.Put(row, col, 1);
+      }
+      
+      if(z == 0)
+      {
+        z++;
+      }else
+      {
+        z--;
+      }
+    }//end adding black
+  }
+  
   public Checkers()
   {
     b = new Board();
