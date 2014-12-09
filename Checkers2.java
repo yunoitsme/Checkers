@@ -6,7 +6,7 @@ public class Checkers2
 {
   Board b;
   boolean RedTurn = true;
-  Location[] toBeRemoved = new Location[10]; //red
+  Location[] toBeRemoved = new Location[10]; //pink? look at java colors
   Location[] path = new Location[10];//gray
   Location start;// yellow
   Location piece;// green
@@ -89,10 +89,10 @@ public class Checkers2
   
   public boolean IsValidMove(Location loc, Location newloc)
   {
-    
+    return false;
   }
   
-  public boolean MakeMove(Location loc, Location newloc)
+  public void MakeMove(Location loc, Location newloc)
   {
     
   }
@@ -100,6 +100,31 @@ public class Checkers2
   public void Move(Location loc, Location newloc)
   {
     
+  }
+  
+  public Location FindJumpedPiece(Location loc, Location newloc)
+  {
+    Location jPiece = new Location();
+    if(newloc.GetRow() > loc.GetRow())
+    {
+      if(newloc.GetCol() > loc.GetCol())
+      {
+        jPiece = new Location(newloc.GetRow() - 1, newloc.GetCol() - 1);
+      }else
+      {
+        jPiece = new Location(newloc.GetRow() - 1, newloc.GetCol() + 1);
+      }
+    }else
+    {
+      if(newloc.GetCol() > loc.GetCol())
+      {
+        jPiece = new Location(newloc.GetRow() + 1, newloc.GetCol() - 1);
+      }else
+      {
+        jPiece = new Location(newloc.GetRow() + 1, newloc.GetCol() + 1);
+      }
+    }
+    return jPiece;
   }
   
   public void RemovePieces()
@@ -187,6 +212,16 @@ public class Checkers2
   public void Click()
   {
     
+  }
+  
+  public static void main(String args[])
+  {
+    Checkers2 c = new Checkers2();
+    c.FindJumpedPiece(new Location(2, 2), new Location(4, 4)).Print();// good
+    c.FindJumpedPiece(new Location(2, 2), new Location(4, 0)).Print();// good
+    c.FindJumpedPiece(new Location(2, 2), new Location(0, 0)).Print();// good
+    c.FindJumpedPiece(new Location(2, 2), new Location(0, 4)).Print();// good
+    c.FindJumpedPiece(new Location(1, 1), new Location(3, 3)).Print();// good
   }
 }
 

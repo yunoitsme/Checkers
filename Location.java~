@@ -21,6 +21,6 @@ public class Location
   
   public int GetCol()
   {
-    return Col;
+    return col;
   }
 }

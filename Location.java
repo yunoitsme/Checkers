@@ -23,4 +23,9 @@ public class Location
   {
     return col;
   }
+  
+  public void Print()
+  {
+    System.out.println("(" + row + ", " + col + ")");
+  }
 }
