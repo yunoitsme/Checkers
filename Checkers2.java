@@ -13,7 +13,7 @@ public class Checkers2
   
   public Checkers2()
   {
-    b = new Board();
+     b = new Board();
     //fill with red
     int z = 0;
     for(int row = 0; row < 3; row++)
@@ -47,7 +47,6 @@ public class Checkers2
         z--;
       }
     }//end adding black
-  }//end cunstructor
   }
   
   public Checkers2(Board board)
