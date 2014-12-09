@@ -1,0 +1,127 @@
+//v1.0.0
+/*
+ * 
+ */
+public class Checkers2
+{
+  Board b;
+  boolean RedTurn = true;
+  Location[] toBeRenoved = new Location[10]; //red
+  Location[] path = new Location[10];//gray
+  Location start;// yellow
+  Location piece;// green
+  
+  public Checkers2()
+  {
+    
+  }
+  
+  public Checkers2(Board board)
+  {
+    
+  }
+  
+  public boolean IsValidMove(Location loc, Location newloc)
+  {
+    
+  }
+  
+  public boolean MakeMove(Location loc, Location newloc)
+  {
+    
+  }
+  
+  public void Move(Location loc, Location newloc)
+  {
+    
+  }
+  
+  public void RemovePieces(Location loc)
+  {
+    
+  }
+  
+  public void KingMe()
+  {
+    
+  }
+  
+  public int GetPiece(Location loc)
+  {
+    
+  }
+  
+  public boolean GameOver()
+  {
+    if(NoBlack() || NoRed())
+    {
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean RedWon()
+  {
+    if(NoRed())
+    {
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean NoRed()
+  {
+    for(int row = 0; row < 8; row++)
+    {
+      for(int col = 0; col < 8; col++)
+      {
+        if(b.GetPiece(row, col) == 2 || b.GetPiece(row, col) == 4)
+        {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  
+  public boolean NoBlack()
+  {
+    for(int row = 0; row < 8; row++)
+    {
+      for(int col = 0; col < 8; col++)
+      {
+        if(b.GetPiece(row, col) == 1 || b.GetPiece(row, col) == 3)
+        {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  
+  public void Click()
+  {
+    
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
