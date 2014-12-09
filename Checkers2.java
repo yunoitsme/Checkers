@@ -1,4 +1,4 @@
-//v1.0.0
+//v1.0.2
 /*
  * 
  */
@@ -6,7 +6,7 @@ public class Checkers2
 {
   Board b;
   boolean RedTurn = true;
-  Location[] toBeRemoved = new Location[10]; //pink? look at java colors
+  Location[] toBeRemoved = new Location[10]; //orange
   Location[] path = new Location[10];//gray
   Location start;// yellow
   Location piece;// green
@@ -92,14 +92,29 @@ public class Checkers2
     return false;
   }
   
-  public void MakeMove(Location loc, Location newloc)
+  public boolean IsBasicMove(Location loc, Location newloc)
+  {
+    return false;
+  }
+  
+  public void MakeMove(Location loc, Location newloc)//will exicute move
   {
     
   }
   
-  public void Move(Location loc, Location newloc)
+  public void DontMakeMove()//will undo all movement when start position is clicked
   {
     
+  }
+  
+  public void Move( Location newloc)
+  {
+    int pieceID;
+    pieceID = b.GetPiece(piece.GetRow(), piece.GetCol());
+    b.Remove(piece.GetRow(), piece.GetCol());
+    toBeRemoved[toBeRemoved.length] = FindJumpedPiece(piece, newloc);
+    b.Put(newloc.GetRow(), newloc.GetCol(), pieceID);
+    piece = new Location(newloc.GetRow(), newloc.GetCol());
   }
   
   public Location FindJumpedPiece(Location loc, Location newloc)
