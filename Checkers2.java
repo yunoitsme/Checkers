@@ -1,6 +1,6 @@
 //v1.0.2
 /*
- * 
+ * add remove path
  */
 public class Checkers2
 {
@@ -8,8 +8,8 @@ public class Checkers2
   boolean RedTurn = true;
   Location[] toBeRemoved = new Location[10]; //orange
   Location[] path = new Location[10];//gray
-  Location start;// yellow
-  Location piece;// green
+  Location start = null;// yellow
+  Location piece = null;// green
   
   public Checkers2()
   {
@@ -87,19 +87,134 @@ public class Checkers2
     }//end adding black
   }
   
-  public boolean IsValidMove(Location loc, Location newloc)
+  public boolean IsValidMove(Location newloc)//ad kings later
   {
+    if(b.GetPiece(piece.GetRow(), piece.GetCol()) == 0)
+    {
+      return false;
+    }
+    if(b.GetPiece(newloc.GetRow(), newloc.GetCol()) != 0)
+    {
+      return false;
+    }
+    //check jump black
+    if(b.GetPiece(piece.GetRow(), piece.GetCol()) == 1)
+    {
+      if(piece.GetRow() - 2 == newloc.GetRow() && piece.GetCol() + 2 == newloc.GetCol() && b.GetPiece(piece.GetRow() - 1, piece.GetCol() + 1) == 2 || 
+         piece.GetRow() - 2 == newloc.GetRow() && piece.GetCol() + 2 == newloc.GetCol() && b.GetPiece(piece.GetRow() - 1, piece.GetCol() + 1) == 4)
+      {
+        //b.Remove(piece.GetRow() - 1, piece.GetCol() + 1);
+        return true;
+      }
+      if(piece.GetRow() - 2 == newloc.GetRow() && piece.GetCol() - 2 == newloc.GetCol() && b.GetPiece(piece.GetRow() - 1, piece.GetCol() - 1) == 2 || 
+         piece.GetRow() - 2 == newloc.GetRow() && piece.GetCol() - 2 == newloc.GetCol() && b.GetPiece(piece.GetRow() - 1, piece.GetCol() - 1) == 4)
+      {  
+        //b.Remove(piece.GetRow() - 1, piece.GetCol() - 1);
+        return true;
+      }
+    }//end black jump
+    //check red jump
+    if(b.GetPiece(piece.GetRow(),  piece.GetCol()) == 2)
+    {
+      if(piece.GetRow() + 2 == newloc.GetRow() && piece.GetCol() + 2 == newloc.GetCol() && b.GetPiece(piece.GetRow() + 1, piece.GetCol() + 1) == 1 || 
+         piece.GetRow() - 2 == newloc.GetRow() && piece.GetCol() + 2 == newloc.GetCol() && b.GetPiece(piece.GetRow() + 1, piece.GetCol() + 1) == 3)
+      {
+        //b.Remove(piece.GetRow() + 1, piece.GetCol() + 1);
+        return true;
+      }
+      if(piece.GetRow() + 2 == newloc.GetRow() && piece.GetCol() - 2 == newloc.GetCol() && b.GetPiece(piece.GetRow() + 1, piece.GetCol() - 1) == 1 || 
+         piece.GetRow() - 2 == newloc.GetRow() && piece.GetCol() + 2 == newloc.GetCol() && b.GetPiece(piece.GetRow() + 1, piece.GetCol() - 1) == 3)
+      {  
+        //b.Remove(piece.GetRow() + 1, piece.GetCol() - 1);
+        return true;
+      }
+    }//end red jump
     return false;
   }
   
-  public boolean IsBasicMove(Location loc, Location newloc)
+  public boolean IsBasicMove(Location newloc)
   {
+    if(b.GetPiece(piece.GetRow(), piece.GetCol()) == 0)
+    {
+      return false;
+    }
+    if(b.GetPiece(newloc.GetRow(), newloc.GetCol()) != 0)
+    {
+      return false;
+    }
+    //check regular for black
+    if(b.GetPiece(piece.GetRow(), piece.GetCol()) == 1)
+    {
+      if(piece.GetRow() - 1 == newloc.GetRow() && piece.GetCol() + 1 == newloc.GetCol())
+      {
+        return true;
+      }
+      if(piece.GetRow() - 1 == newloc.GetRow() && piece.GetCol() - 1 == newloc.GetCol())
+      {  
+        return true;
+      }
+    }//end regular move black
+    //check regular move red
+    if(b.GetPiece(piece.GetRow(), piece.GetCol()) == 2)
+    {
+      if(piece.GetRow() + 1 == newloc.GetRow() && piece.GetCol() + 1 == newloc.GetCol())
+      {
+        return true;
+      }
+      if(piece.GetRow() + 1 == newloc.GetRow() && piece.GetCol() - 1 == newloc.GetCol())
+      {  
+        return true;
+      }
+    }//end regular move red
+    //check black king regular
+    if(b.GetPiece(piece.GetRow(), piece.GetCol()) == 3)
+    {
+      if(piece.GetRow() - 1 == newloc.GetRow() && piece.GetCol() + 1 == newloc.GetCol())
+      {
+        return true;
+      }
+      if(piece.GetRow() - 1 == newloc.GetRow() && piece.GetCol() - 1 == newloc.GetCol())
+      {  
+        return true;
+      }
+      if(piece.GetRow() + 1 == newloc.GetRow() && piece.GetCol() + 1 == newloc.GetCol())
+      {
+        return true;
+      }
+      if(piece.GetRow() + 1 == newloc.GetRow() && piece.GetCol() - 1 == newloc.GetCol())
+      {
+        return true;
+      }
+    }//end black king regular move
+    //check red king regular
+    if(b.GetPiece(piece.GetRow(), piece.GetCol()) == 4)
+    {
+      if(piece.GetRow() - 1 == newloc.GetRow() && piece.GetCol() + 1 == newloc.GetCol())
+      {
+        return true;
+      }
+      if(piece.GetRow() - 1 == newloc.GetRow() && piece.GetCol() - 1 == newloc.GetCol())
+      {  
+        return true;
+      }
+      if(piece.GetRow() + 1 == newloc.GetRow() && piece.GetCol() + 1 == newloc.GetCol())
+      {
+        return true;
+      }
+      if(piece.GetRow() + 1 == newloc.GetRow() && piece.GetCol() - 1 == newloc.GetCol())
+      {
+        return true;
+      }
+    }//end red king regular move
     return false;
   }
   
-  public void MakeMove(Location loc, Location newloc)//will exicute move
+  public void MakeMove()//will exicute move
   {
-    
+    RemovePieces();
+    piece = null;
+    start = null;
+    path = new Location[10];
   }
   
   public void DontMakeMove()//will undo all movement when start position is clicked
@@ -107,13 +222,14 @@ public class Checkers2
     
   }
   
-  public void Move( Location newloc)
+  public void Move(Location newloc)//may need to be rewritten or edited 
   {
     int pieceID;
     pieceID = b.GetPiece(piece.GetRow(), piece.GetCol());
     b.Remove(piece.GetRow(), piece.GetCol());
     toBeRemoved[toBeRemoved.length] = FindJumpedPiece(piece, newloc);
     b.Put(newloc.GetRow(), newloc.GetCol(), pieceID);
+    path[path.length] = piece;
     piece = new Location(newloc.GetRow(), newloc.GetCol());
   }
   
@@ -224,9 +340,83 @@ public class Checkers2
     return true;
   }
   
-  public void Click()
+  public Location GetStart()
   {
-    
+    return start;
+  }
+  
+  /*public void Click(Location newloc)
+  {
+    if(start == null)
+    {
+      if(b.GetPiece(newloc.GetRow(), newloc.GetCol()) != 0)
+      {
+        if(RedTurn)
+        {
+          if(b.GetPiece(newloc.GetRow(), newloc.GetCol()) == 2 || b.GetPiece(newloc.GetRow(), newloc.GetCol()) == 4)
+          {
+            System.out.println("test");
+            start = newloc;
+            start.Print();
+          }
+        }else
+        {
+          if(b.GetPiece(newloc.GetRow(), newloc.GetCol()) == 1 || b.GetPiece(newloc.GetRow(), newloc.GetCol()) == 3)
+          {
+            start = newloc;
+          }
+        }
+      }
+    }else
+    {
+      if(newloc.Equals(piece))
+      {
+        MakeMove();
+      }
+      if(IsBasicMove(newloc))
+      {
+        Move(newloc);
+        MakeMove();
+      }
+      if(IsValidMove(newloc))
+      {
+        Move(newloc);
+      }
+    }
+  }*/
+  
+  public boolean IsStart()
+  {
+    if(start != null)
+    {
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean IsPiece()
+  {
+    if(start != null)
+    {
+      return true;
+    }
+    return false;
+  }
+  
+  public Location GetStartLoc()
+  {
+    return start;
+  }
+  
+  public Location GetPieceLoc()
+  {
+    return piece;
+  }
+  
+  public void Click(Location newloc)
+  {
+    start = newloc;
+    start.Print();
   }
   
   public static void main(String args[])
@@ -237,6 +427,7 @@ public class Checkers2
     c.FindJumpedPiece(new Location(2, 2), new Location(0, 0)).Print();// good
     c.FindJumpedPiece(new Location(2, 2), new Location(0, 4)).Print();// good
     c.FindJumpedPiece(new Location(1, 1), new Location(3, 3)).Print();// good
+    System.out.println(c.IsStart());
   }
 }
 

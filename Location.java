@@ -24,6 +24,15 @@ public class Location
     return col;
   }
   
+  public boolean Equals(Location loc)
+  {
+    if(row == loc.GetRow() && col == loc.GetCol())
+    {
+      return true;
+    }
+    return false;
+  }
+  
   public void Print()
   {
     System.out.println("(" + row + ", " + col + ")");

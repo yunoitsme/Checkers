@@ -16,7 +16,7 @@ import java.awt.event.*;
  * instead of (row, col)
  * (col, row)
  */
-public class GBoard extends JPanel
+public class GBoard2 extends JPanel
 {
   Font red = new Font("SansSerif", Font.BOLD, 80);
   static Checkers2 c = new Checkers2();
@@ -25,12 +25,12 @@ public class GBoard extends JPanel
   static final int Ymax = Dimensions + 23;
   int space = Dimensions / 8;
   
-  public GBoard()
+  public GBoard2()
   {
     
   }//default
   
-  public GBoard(Checkers2 checkers)
+  public GBoard2(Checkers2 checkers)
   {
     c = checkers;
   }//creating with checkers object already created
@@ -85,34 +85,63 @@ public class GBoard extends JPanel
       {
         b.setColor(Color.yellow);
         b.fillRect((c.GetHCol() * space) + 1, (c.GetHRow() * space) + 1, ((c.GetHCol() + 1 * space) - c.GetHCol()) - 1, ((c.GetHRow() + 1 * space) - c.GetHRow()) - 1);
-      }*/
-      
-      if(c.IsStart())
-      {
-        //highlight start
-        Location startLoc = c.GetStartLoc();
-        b.setColor(Color.yellow);
-        b.fillRect((startLoc.GetCol() * space) + 1, (startLoc.GetRow() * space) + 1, 
-                   ((startLoc.GetCol() + 1 * space) - startLoc.GetCol()) - 1, ((startLoc.GetRow() + 1 * space) - startLoc.GetRow()) - 1);
-                     
       }
       
-      /*if(c.IsPiece())
+      //highlight all spaces
+      if(c.piece != null)
       {
-        //highlight piece
-        Location pieceLoc = c.GetPieceLoc();
         b.setColor(Color.GREEN);
-        b.fillRect((pieceLoc.GetCol() * space) + 1, (pieceLoc.GetRow() * space) + 1, 
-                   ((pieceLoc.GetCol() + 1 * space) - pieceLoc.GetCol()) - 1, ((pieceLoc.GetRow() + 1 * space) - pieceLoc.GetRow()) - 1);
-      }*/
-    
+        b.fillRect((c.piece.GetCol() * space) + 1, (c.piece.GetRow() * space) + 1,
+                   ((c.piece.GetCol() + 1 * space) - c.piece.GetCol()) - 1, ((c.piece.GetRow() + 1 * space) - c.piece.GetRow()) - 1);
+      }
+      
+      //if(c.start != null)
+     // {
+        b.setColor(Color.yellow);
+        b.fillRect((c.start.GetCol() * space) + 1, (c.start.GetRow() * space) + 1,
+                   ((c.start.GetCol() + 1 * space) - c.start.GetCol()) - 1, ((c.start.GetRow() + 1 * space) - c.start.GetRow()) - 1);
+      //}
+      
+      b.setColor(Color.ORANGE);
+      for(int x = 0; x < c.toBeRemoved.length; x++)
+      {
+        Location loc = c.toBeRemoved[x];
+        b.fillRect((loc.GetCol() * space) + 1, (loc.GetRow() * space) + 1,
+                   ((loc.GetCol() + 1 * space) - loc.GetCol()) - 1, ((loc.GetRow() + 1 * space) - loc.GetRow()) - 1);
+      }
+      
+      b.setColor(Color.GRAY);
+      for(int x = 0; x < c.path.length; x++)
+      {
+        Location loc = c.path[x];
+        b.fillRect((loc.GetCol() * space) + 1, (loc.GetRow() * space) + 1,
+                   ((loc.GetCol() + 1 * space) - loc.GetCol()) - 1, ((loc.GetRow() + 1 * space) - loc.GetRow()) - 1);
+      }
+      */
+      //highlights
+      for(int row = 0; row < 8; row++)
+      {
+        for(int col = 0; col < 8; col++)
+        {
+          if(row == c.start.GetRow() && col == c.start.GetCol())
+          {
+            b.setColor(Color.yellow);
+            b.fillRect((col * space) + 1, (row * space) + 1, ((col + 1 * space) - col) - 1, ((row + 1 * space) - row) - 1);
+          }
+        }
+      }
+      
       //draws pieces
       for(int row = 0; row < 8; row++)
       {
         for(int col = 0; col < 8; col++)
         {
-          Location loc = new Location(row, col);
-          switch (c.GetPiece(loc))
+          if(row == c.start.GetRow() && col == c.start.GetCol())
+          {
+            b.setColor(Color.yellow);
+            b.fillRect((col * space) + 1, (row * space) + 1, ((col + 1 * space) - col) - 1, ((row + 1 * space) - row) - 1);
+          }
+          switch (c.GetPiece(new Location(row, col)))
           {
             case 0:
               break;
@@ -178,8 +207,7 @@ public class GBoard extends JPanel
           //System.out.println(e.getPoint());
           col = (e.getX() / 10) / 10;
           row = ((e.getY() / 10) - 2) / 10;
-          Location loc = new Location(row, col);
-          c.Click(loc);
+          c.Click(new Location(row, col));
           //System.out.println(row);
           //System.out.println(col);
         }

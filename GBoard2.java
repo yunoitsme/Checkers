@@ -16,21 +16,21 @@ import java.awt.event.*;
  * instead of (row, col)
  * (col, row)
  */
-public class GBoard extends JPanel
+public class GBoard2 extends JPanel
 {
   Font red = new Font("SansSerif", Font.BOLD, 80);
-  static Checkers2 c = new Checkers2();
+  static Checkers c = new Checkers();
   static final int Dimensions = 800;
   static final int Xmax = Dimensions + 1;
   static final int Ymax = Dimensions + 23;
   int space = Dimensions / 8;
   
-  public GBoard()
+  public GBoard2()
   {
     
   }//default
   
-  public GBoard(Checkers2 checkers)
+  public GBoard2(Checkers checkers)
   {
     c = checkers;
   }//creating with checkers object already created
@@ -81,38 +81,18 @@ public class GBoard extends JPanel
       }
     
       //highlight selected piece
-      /*if(c.GetHighlightedSpace())
+      if(c.GetHighlightedSpace())
       {
         b.setColor(Color.yellow);
         b.fillRect((c.GetHCol() * space) + 1, (c.GetHRow() * space) + 1, ((c.GetHCol() + 1 * space) - c.GetHCol()) - 1, ((c.GetHRow() + 1 * space) - c.GetHRow()) - 1);
-      }*/
-      
-      if(c.IsStart())
-      {
-        //highlight start
-        Location startLoc = c.GetStartLoc();
-        b.setColor(Color.yellow);
-        b.fillRect((startLoc.GetCol() * space) + 1, (startLoc.GetRow() * space) + 1, 
-                   ((startLoc.GetCol() + 1 * space) - startLoc.GetCol()) - 1, ((startLoc.GetRow() + 1 * space) - startLoc.GetRow()) - 1);
-                     
       }
-      
-      /*if(c.IsPiece())
-      {
-        //highlight piece
-        Location pieceLoc = c.GetPieceLoc();
-        b.setColor(Color.GREEN);
-        b.fillRect((pieceLoc.GetCol() * space) + 1, (pieceLoc.GetRow() * space) + 1, 
-                   ((pieceLoc.GetCol() + 1 * space) - pieceLoc.GetCol()) - 1, ((pieceLoc.GetRow() + 1 * space) - pieceLoc.GetRow()) - 1);
-      }*/
     
       //draws pieces
       for(int row = 0; row < 8; row++)
       {
         for(int col = 0; col < 8; col++)
         {
-          Location loc = new Location(row, col);
-          switch (c.GetPiece(loc))
+          switch (c.GetPiece(row, col))
           {
             case 0:
               break;
@@ -168,7 +148,7 @@ public class GBoard extends JPanel
         {
           if(e.getX() < 400 && e.getY() > 600)
           {
-            c = new Checkers2();
+            c = new Checkers();
           }else
           {
             System.exit(0);
@@ -178,8 +158,7 @@ public class GBoard extends JPanel
           //System.out.println(e.getPoint());
           col = (e.getX() / 10) / 10;
           row = ((e.getY() / 10) - 2) / 10;
-          Location loc = new Location(row, col);
-          c.Click(loc);
+          c.Click(row, col);
           //System.out.println(row);
           //System.out.println(col);
         }
