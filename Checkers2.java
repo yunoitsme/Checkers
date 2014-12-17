@@ -417,6 +417,15 @@ public class Checkers2
   {
     start = newloc;
     start.Print();
+    if(start != null)
+    {
+      piece = newloc;
+    }
+  }
+  
+  public Board GetBoard()
+  {
+    return b;
   }
   
   public static void main(String args[])

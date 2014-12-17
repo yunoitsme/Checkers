@@ -8,7 +8,7 @@ public class Checkers2
   boolean RedTurn = true;
   Location[] toBeRemoved = new Location[10]; //orange
   Location[] path = new Location[10];//gray
-  Location start = new Location(0,0);// yellow
+  Location start = null;// yellow
   Location piece = null;// green
   
   public Checkers2()
@@ -345,15 +345,6 @@ public class Checkers2
     return start;
   }
   
-  public boolean IsStart()
-  {
-    if(start == null)
-    {
-      return false;
-    }
-    return true;
-  }
-  
   /*public void Click(Location newloc)
   {
     if(start == null)
@@ -394,10 +385,43 @@ public class Checkers2
     }
   }*/
   
+  public boolean IsStart()
+  {
+    if(start != null)
+    {
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean IsPiece()
+  {
+    if(start != null)
+    {
+      return true;
+    }
+    return false;
+  }
+  
+  public Location GetStartLoc()
+  {
+    return start;
+  }
+  
+  public Location GetPieceLoc()
+  {
+    return piece;
+  }
+  
   public void Click(Location newloc)
   {
     start = newloc;
     start.Print();
+  }
+  
+  public Board GetBoard()
+  {
+    return b;
   }
   
   public static void main(String args[])

@@ -36,6 +36,21 @@ public class Board
     GameBoard[row][col] = 0;
   }
   
+  public String GetString()
+  {
+    String s = "";
+    for(int row = 0; row < 8; row++)
+    {
+      for(int col = 0; col < 8; col++)
+      {
+        s = s + GetPiece(row,col);
+        //System.out.print(GameBoard[row][col]);
+      }
+      s = s + "\n";
+    }
+    return s;
+  }
+  
   public void Print()
   {
     for(int row = 0; row < 8; row++)

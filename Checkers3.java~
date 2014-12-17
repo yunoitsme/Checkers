@@ -1,0 +1,7 @@
+
+public class Checkers3
+{
+  Board b;
+  boolean RedTurn = true;
+  InteractionBoard ib = new InteractionBoard();
+}

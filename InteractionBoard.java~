@@ -1,0 +1,20 @@
+/*
+ * 0 = no highlight
+ * 1 = start = yellow
+ * 2 = piece = green
+ * 3 = path = gray
+ * 4 = toberemoved = orange
+ * 
+ * get number of highleghted spaces function
+ * get highleghted location #... function
+ * have a manage interactionboard function in checkers or here
+ * have a similar switch statement to the drawing the of the  pieces
+ * have this class manage the highlight not checkers class
+ */
+public class InteractionBoard extends Board
+{
+  Location piece;
+  Location start;
+  Location[] path = new Location[10];
+  Location[] toBeRemoved = new Location[10];
+}
