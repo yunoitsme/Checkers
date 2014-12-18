@@ -21,6 +21,11 @@ public class InteractionBoard extends Board
   int pathLength = 0;
   int toBeRemovedLength = 0;
   
+  public InteractionBoard()
+  {
+    super();
+  }
+  
   public void SetPiece(Location loc)
   {
     piece = loc;
@@ -80,6 +85,7 @@ public class InteractionBoard extends Board
     toBeRemoved = new Location[10];
     toBeRemovedLength = 0;
     pathLength = 0;
+    ResetBoard();
   }
 }
 

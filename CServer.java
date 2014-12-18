@@ -1,4 +1,4 @@
-
+//remove col amd row from sting that is sent between them
 //have the program display ur ip for easy use
 import java.io.IOException;
 import java.io.PrintWriter;

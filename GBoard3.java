@@ -116,12 +116,48 @@ public class GBoard3 extends JPanel
     }
   }
   
-  public static void main(String args[])
+  public static void main(String args[]) throws InterruptedException
   {
     JFrame frame = new JFrame("Checkers");
     frame.add(new GBoard3());
     frame.setSize(Xmax, Ymax);
     frame.setVisible(true);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.addMouseListener(new MouseAdapter()
+    {
+      public void mousePressed(MouseEvent e)
+      {
+        int col;
+        int row;
+        col = (e.getX() / 10) / 10;
+        row = ((e.getY() / 10) - 2) / 10;
+        c.Click(new Location(row, col));
+        /*if(c.GameOver())
+        {
+          if(e.getX() < 400 && e.getY() > 600)
+          {
+            c = new Checkers();
+          }else
+          {
+            System.exit(0);
+          }
+        }else
+        {
+          //System.out.println(e.getPoint());
+          col = (e.getX() / 10) / 10;
+          row = ((e.getY() / 10) - 2) / 10;
+          c.Click(row, col);
+          //System.out.println(row);
+          //System.out.println(col);
+        }*/
+      }
+    }
+    );
+    
+    while(true)
+    {
+      frame.repaint();
+      Thread.sleep(100);
+    }
   }
 }

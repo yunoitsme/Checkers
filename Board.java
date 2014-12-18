@@ -51,6 +51,17 @@ public class Board
     return s;
   }
   
+  public void ResetBoard()
+  {
+    for(int x = 0; x < 8; x++)
+    {
+      for(int y = 0; y < 8; y++)
+      {
+        GameBoard[x][y] = 0;
+      }
+    }
+  }
+  
   public void Print()
   {
     for(int row = 0; row < 8; row++)
