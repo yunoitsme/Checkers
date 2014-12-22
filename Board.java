@@ -1,4 +1,5 @@
 //v1.6.0
+//may add toString method for board to make it easier in server/ client classes
 public class Board
 {
   private int[][] GameBoard;
@@ -72,5 +73,19 @@ public class Board
       }
       System.out.println();
     }
+  }
+  
+  public String toString()
+  {
+    String b = "";
+    for(int row = 0; row < 8; row++)
+    {
+      for(int col = 0; col < 8; col++)
+      {
+        b = b + GameBoard[row][col]; 
+      }
+      b = b + "\n";
+    }
+    return b;
   }
 }//end class

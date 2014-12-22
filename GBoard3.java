@@ -10,7 +10,7 @@ import java.awt.event.*;
 
 public class GBoard3 extends JPanel
 {
-  //will change to incorparate screen size and prefered screen size
+  //will change to incorparate default screen size and prefered screen size
   Font red = new Font("SansSerif", Font.BOLD, 80);
   static Checkers3 c = new Checkers3();
   static final int Dimensions = 800;
@@ -45,13 +45,13 @@ public class GBoard3 extends JPanel
             break;
             
           case 3:
-            g.setColor(Color.orange);
+            g.setColor(Color.gray);
             //b.drawOval();
             g.fillRect(col * space, row * space, (col + 1 * space) - col, (row + 1 * space) - row);
             break;
             
           case 4:
-            g.setColor(Color.gray);
+            g.setColor(Color.orange);
             //b.fillOval();
             g.fillRect(col * space, row * space, (col + 1 * space) - col, (row + 1 * space) - row);
             break;

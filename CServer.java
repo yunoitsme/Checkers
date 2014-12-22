@@ -14,6 +14,7 @@ public class CServer
     int x = 1;
     Checkers2 c = new Checkers2();
     Board b = c.GetBoard();
+    System.out.println(b);
     
     try
     {
@@ -23,7 +24,7 @@ public class CServer
         try
         {
           PrintWriter out = new PrintWriter(s.getOutputStream(), true);
-          out.println(/*new Date().toString()*//*"connections: "+ x*/ CreateBoardString(b));
+          out.println(/*new Date().toString()*//*"connections: "+ x*/ b.toString());
           
         }finally
         {

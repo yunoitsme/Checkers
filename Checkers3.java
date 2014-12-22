@@ -57,7 +57,36 @@ public class Checkers3
     {
       if(IsBasicMove(loc))
       {
-        ib.SetPiece(loc);
+        if(loc.equals(ib.GetPiece()))
+        {
+          MakeMove(loc);
+        }else
+        {
+          ib.SetPiece(loc);
+          Move(loc);
+        }
+        //ib.SetPiece(loc);
+       // Move(loc);
+        //MakeMove(loc);
+        //ib.ResetInteraction();
+      }
+      if(loc.equals(ib.GetPiece()))
+        {
+          MakeMove(loc);
+        }
+      if(IsValidMove(loc))
+      {
+        if(ib.GetPiece().equals(ib.GetStart()))
+        {
+          ib.AddRemoved(FindJumpedPiece(ib.GetPiece(), loc));
+          ib.SetPiece(loc);
+        }else
+        {
+          ib.AddRemoved(FindJumpedPiece(ib.GetPiece(), loc));
+          ib.SetPiece(loc);
+          ib.AddPath(ib.GetPiece());
+        }
+        
       }
     }
     //ib.ResetInteraction();
@@ -191,14 +220,59 @@ public class Checkers3
     return false;
   }
   
-  public void Move(Location loc)
+  public Location FindJumpedPiece(Location loc, Location newloc)
   {
-    
+    Location jPiece = new Location();
+    if(newloc.GetRow() > loc.GetRow())
+    {
+      if(newloc.GetCol() > loc.GetCol())
+      {
+        jPiece = new Location(newloc.GetRow() - 1, newloc.GetCol() - 1);
+      }else
+      {
+        jPiece = new Location(newloc.GetRow() - 1, newloc.GetCol() + 1);
+      }
+    }else
+    {
+      if(newloc.GetCol() > loc.GetCol())
+      {
+        jPiece = new Location(newloc.GetRow() + 1, newloc.GetCol() - 1);
+      }else
+      {
+        jPiece = new Location(newloc.GetRow() + 1, newloc.GetCol() + 1);
+      }
+    }
+    return jPiece;
   }
   
-  public void MakeMove()
+  public void Move(Location loc)
   {
-    
+    if(IsBasicMove(loc) == false)///////////need to look at this
+    {
+      MakeMove(loc);
+    }else
+    {
+      Location jumped;
+      jumped = FindJumpedPiece(ib.GetPiece(), loc);
+      ib.AddPath(ib.GetPiece());
+      ib.AddRemoved(jumped);
+      ib.SetPiece(loc);
+      //ib.ResetInteraction();
+    }
+  }
+  
+  public void MakeMove(Location loc)//ad for jumps later
+  {
+    /*
+    int id;
+    id = b.GetPiece(ib.GetStart().GetRow(), ib.GetStart().GetCol());
+    b.Remove(ib.GetStart().GetRow(), ib.GetStart().GetCol());
+    b.Put(ib.GetPiece().GetRow(), ib.GetPiece().GetCol(), id);
+    */
+    //b.Remove(ib.GetStart().GetRow(), ib.GetStart().GetCol());
+    //b.Put(ib.GetPiece().GetRow(), ib.GetPiece().GetCol(), b.GetPiece(ib.GetStart().GetRow(), ib.GetStart().GetCol()));
+    b.MovePiece(ib.GetStart().GetRow(), ib.GetStart().GetCol(), ib.GetPiece().GetRow(), ib.GetPiece().GetCol());
+    ib.ResetInteraction();
   }
   
   public void DontMakeMove()
