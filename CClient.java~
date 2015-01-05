@@ -15,7 +15,7 @@ public class CClient
     BufferedReader input = new BufferedReader(new InputStreamReader(s.getInputStream()));
     String answer = input.readLine();
     Board b = DeCodeBoard(answer);
-    JOptionPane.showMessageDialog(null, b.GetString());
+    JOptionPane.showMessageDialog(null, answer);
     System.exit(0);
   }
   

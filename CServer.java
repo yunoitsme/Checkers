@@ -10,11 +10,11 @@ public class CServer
 {
   public static void main(String args[]) throws IOException
   {
-    ServerSocket socket = new ServerSocket(9090);
+    ServerSocket socket = new ServerSocket(9091);
     int x = 1;
     Checkers2 c = new Checkers2();
     Board b = c.GetBoard();
-    System.out.println(b);
+    //System.out.println(b);
     
     try
     {
@@ -24,7 +24,7 @@ public class CServer
         try
         {
           PrintWriter out = new PrintWriter(s.getOutputStream(), true);
-          out.println(/*new Date().toString()*//*"connections: "+ x*/ b.toString());
+          out.println(/*new Date().toString()*//*"connections: "+ x*/ b);
           
         }finally
         {
@@ -38,6 +38,7 @@ public class CServer
     }
   }
   
+  //dont use
   public static String CreateBoardString(Board board)
   {
     String boardString = "0";

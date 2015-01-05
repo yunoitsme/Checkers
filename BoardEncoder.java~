@@ -1,0 +1,7 @@
+public class BoardEncoder
+{
+  public String Encode(Board B)
+  {
+    
+  }
+}

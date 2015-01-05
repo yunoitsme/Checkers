@@ -63,6 +63,17 @@ public class Board
     }
   }
   
+  public void FillBoard()
+  {
+    for(int x = 0; x < 8; x++)
+    {
+      for(int y = 0; y < 8; y++)
+      {
+        GameBoard[x][y] = x;
+      }
+    }
+  }
+  
   public void Print()
   {
     for(int row = 0; row < 8; row++)
@@ -84,7 +95,7 @@ public class Board
       {
         b = b + GameBoard[row][col]; 
       }
-      b = b + "\n";
+      //b = b + "\n";
     }
     return b;
   }
