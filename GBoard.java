@@ -120,6 +120,16 @@ public class GBoard extends JPanel
     
   }
   
+  public Checkers GetCheckers()
+  {
+    return c;
+  }
+  
+  public void NewCheckers()
+  {
+    c = new Checkers();
+  }
+  
   public static void main(String[] args) throws InterruptedException
   {
     JFrame frame = new JFrame("Checkers");

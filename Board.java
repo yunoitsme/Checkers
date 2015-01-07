@@ -74,16 +74,20 @@ public class Board
     }
   }
   
-  public void Print()
+  public String Print()
   {
+    String s = "";
     for(int row = 0; row < 8; row++)
     {
       for(int col = 0; col < 8; col++)
       {
         System.out.print(GameBoard[row][col]);
+        s = s + GameBoard[row][col];
       }
       System.out.println();
+      s = s + "\n";
     }
+    return s;
   }
   
   public String toString()

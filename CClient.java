@@ -5,20 +5,27 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import javax.swing.JOptionPane;
+import java.io.*;
+import java.net.*;
 
 public class CClient
 {
   public static void main(String args[]) throws IOException
   {
+    Board b = new Board();
+    b.FillBoard();
+    
     String ip = JOptionPane.showInputDialog("Enter IP Address of a machine that is\n" + "running on port 9090:");
     Socket s = new Socket(ip, 9091);
+    DataOutputStream output = new DataOutputStream(s.getOutputStream());
     BufferedReader input = new BufferedReader(new InputStreamReader(s.getInputStream()));
+    
+    output.writeBytes(b.toString() + '\n');
     String answer = input.readLine();
-    //Board b = DeCodeBoard(answer);
-    Board b = new Board();
+    
     JOptionPane.showMessageDialog(null, b);
     b = DeCodeBoard(answer);
-    JOptionPane.showMessageDialog(null, b);
+    JOptionPane.showMessageDialog(null, b.Print());
     System.out.println(answer);
     System.exit(0);
   }

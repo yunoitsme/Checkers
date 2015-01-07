@@ -14,7 +14,7 @@ public class CServer
     int x = 1;
     Checkers2 c = new Checkers2();
     Board b = c.GetBoard();
-    System.out.println(b);
+    //System.out.println(b);
     
     try
     {
@@ -24,7 +24,7 @@ public class CServer
         try
         {
           PrintWriter out = new PrintWriter(s.getOutputStream(), true);
-          out.println(/*new Date().toString()*//*"connections: "+ x*/ b.toString());
+          out.println(/*new Date().toString()*//*"connections: "+ x*/ b);
           
         }finally
         {
@@ -36,19 +36,5 @@ public class CServer
     {
       socket.close();
     }
-  }
-  
-  public static String CreateBoardString(Board board)
-  {
-    String boardString = "0";
-    
-    for(int row = 0; row < 8; row++)
-    {
-      for(int col = 0; col < 8; col++)
-      {
-        boardString = boardString + row + col + board.GetPiece(row, col);
-      }
-    }
-    return boardString;
-  }//end createboardstring
-}
+  }//end main
+}//end class

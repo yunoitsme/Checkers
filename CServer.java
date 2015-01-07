@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
+import java.io.*;
+import java.net.*;
 
 public class CServer
 {
@@ -14,8 +16,20 @@ public class CServer
     int x = 1;
     Checkers2 c = new Checkers2();
     Board b = c.GetBoard();
-    //System.out.println(b);
+    System.out.println(b);
+    String fromClient = "";
     
+    while(true)
+    {
+      Socket s = socket.accept();
+      BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+      fromClient = in.readLine();
+      System.out.println(fromClient);
+      PrintWriter out = new PrintWriter(s.getOutputStream(), true);
+      out.println(b);
+    }
+    
+    /*
     try
     {
       while(true)
@@ -23,8 +37,11 @@ public class CServer
         Socket s = socket.accept();
         try
         {
+          BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+          fromClient = in.readLine();
+          System.out.println(fromClient);
           PrintWriter out = new PrintWriter(s.getOutputStream(), true);
-          out.println(/*new Date().toString()*//*"connections: "+ x*/ b);
+          out.println(b);
           
         }finally
         {
@@ -36,20 +53,6 @@ public class CServer
     {
       socket.close();
     }
-  }
-  
-  //dont use
-  public static String CreateBoardString(Board board)
-  {
-    String boardString = "0";
-    
-    for(int row = 0; row < 8; row++)
-    {
-      for(int col = 0; col < 8; col++)
-      {
-        boardString = boardString + row + col + board.GetPiece(row, col);
-      }
-    }
-    return boardString;
-  }//end createboardstring
-}
+    */
+  }//end main
+}//end class
