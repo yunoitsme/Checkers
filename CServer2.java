@@ -12,9 +12,12 @@ import java.awt.event.*;
 
 public class CServer2
 {
+  int clickedRow;
+  int clickedCol;
   static GBoard g = new GBoard();
-  public static void main(String argv[]) throws Exception
+  public static void main(String args[]) throws Exception
       {
+         
          String boardFromClient;
          String capitalizedSentence;
          
@@ -85,5 +88,11 @@ public class CServer2
       }
     }
     return b;
+  }
+  
+  public void SetClicked(int row, int col)
+  {
+    clickedRow = row;
+    clickedCol = col;
   }
 }

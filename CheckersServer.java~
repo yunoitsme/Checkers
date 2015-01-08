@@ -1,6 +1,6 @@
 /*
  * server for checkers
- * v 0.1
+ * v 1.6.0
  */
 import java.lang.*;
 import java.io.*;
@@ -16,7 +16,7 @@ public class CheckersServer
     String bString;
     Board b = new Board();
     Checkers c = new Checkers(b);
-    ServerSocket welcomeSocket = new ServerSocket(6789);
+    ServerSocket welcomeSocket = new ServerSocket(/*6789*/6790);
 
     while(true)
     {
@@ -27,6 +27,7 @@ public class CheckersServer
       System.out.println("Received: " + clientSentence);
       bString = CreateBoardString(b);
       capitalizedSentence = clientSentence.toUpperCase() + '\n';
+      capitalizedSentence = capitalizedSentence + bString;
       outToClient.writeBytes(capitalizedSentence + " " + bString);
     }
   }

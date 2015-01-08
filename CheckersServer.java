@@ -1,47 +1,28 @@
-/*
- * server for checkers
- * v 1.6.0
- */
-import java.lang.*;
 import java.io.*;
 import java.net.*;
-import java.util.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.geom.Ellipse2D;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.*;
+import java.awt.event.*;
 
 public class CheckersServer
 {
-  public static void main(String argv[]) throws Exception
+  public static void main(String args[]) throws Exception
   {
-    String clientSentence;
-    String capitalizedSentence;
-    String bString;
-    Board b = new Board();
-    Checkers c = new Checkers(b);
-    ServerSocket welcomeSocket = new ServerSocket(/*6789*/6790);
-
+    ServerSocket socket = new ServerSocket(9091);
+    
     while(true)
     {
-      Socket connectionSocket = welcomeSocket.accept();
-      BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
-      DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
-      clientSentence = inFromClient.readLine();
-      System.out.println("Received: " + clientSentence);
-      bString = CreateBoardString(b);
-      capitalizedSentence = clientSentence.toUpperCase() + '\n';
-      capitalizedSentence = capitalizedSentence + bString;
-      outToClient.writeBytes(capitalizedSentence + " " + bString);
+      Socket s = socket.accept();
+      BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+      DataOutputStream out = new DataOutputStream(s.getOutputStream());
+      
+      
     }
   }
-  public static String CreateBoardString(Board board)
-  {
-    String boardString = "0";
-    
-    for(int row = 0; row < 8; row++)
-    {
-      for(int col = 0; col < 8; col++)
-      {
-        boardString = boardString + row + col + board.GetPiece(row, col);
-      }
-    }
-    return boardString;
-  }//end createboardstring
 }
