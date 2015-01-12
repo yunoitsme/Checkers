@@ -15,6 +15,9 @@ public class CServer2
   int clickedRow;
   int clickedCol;
   static GBoard g = new GBoard();
+  static JFrame frame = new JFrame("Checkers");
+  static boolean send = false;
+  
   public static void main(String args[]) throws Exception
       {
          
@@ -22,13 +25,12 @@ public class CServer2
          String capitalizedSentence;
          
          ServerSocket socket = new ServerSocket(6789);
-         Checkers2 c = new Checkers2();
+         Checkers c = g.GetCheckers();
          Board b = c.GetBoard();
          System.out.println(b);
          
-         JFrame frame = new JFrame("Checkers");
          frame.add(g);
-         frame.setSize(800, 800);
+         frame.setSize(801, 823);
          frame.setVisible(true);
          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          frame.addMouseListener(new MouseAdapter()
@@ -61,15 +63,30 @@ public class CServer2
 
          while(true)
          {
-            Socket s = socket.accept();
-            BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-            DataOutputStream out = new DataOutputStream(s.getOutputStream());
-            boardFromClient = in.readLine();
+            frame.repaint();
+            if(c.RedTurn == false)
+            {
+              System.out.println("yay");
+              Socket s = socket.accept();
+              BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+              DataOutputStream out = new DataOutputStream(s.getOutputStream());
+              boardFromClient = in.readLine();
+              
+              Board hold = DeCodeBoard(boardFromClient);
+              out.writeBytes(b.toString() + '\n');
+              send = false;
+            }
+            //Socket s = socket.accept();
+            //BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            //DataOutputStream out = new DataOutputStream(s.getOutputStream());
+            //boardFromClient = in.readLine();
             
-            System.out.println("Received: " + boardFromClient);
             
-            Board hold = DeCodeBoard(boardFromClient);
-            out.writeBytes(b.toString() + '\n');
+            //System.out.println("Received: " + boardFromClient);
+            
+            
+            //Board hold = DeCodeBoard(boardFromClient);
+            //out.writeBytes(b.toString() + '\n');
             c.KingMe();
             frame.repaint();
          }
@@ -94,5 +111,15 @@ public class CServer2
   {
     clickedRow = row;
     clickedCol = col;
+  }
+  
+  public static void UpDate()
+  {
+    frame.repaint();
+  }
+  
+  public static void Send()
+  {
+    send = true;
   }
 }

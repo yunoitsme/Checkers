@@ -21,39 +21,6 @@ public class Checkers
   public Checkers(Board board)
   {
     b = board;
-    //fill with red
-    int z = 0;
-    for(int row = 0; row < 3; row++)
-    {
-      for(int col = z; col < 8; col+= 2)
-      {
-        b.Put(row, col, 2);
-      }
-      
-      if(z == 0)
-      {
-        z++;
-      }else
-      {
-        z--;
-      }
-    }//end adding red
-    //fill with black
-    for(int row = 5; row < 8; row++)
-    {
-      for(int col = z; col < 8; col+= 2)
-      {
-        b.Put(row, col, 1);
-      }
-      
-      if(z == 0)
-      {
-        z++;
-      }else
-      {
-        z--;
-      }
-    }//end adding black
   }
   
   public Checkers()
@@ -647,6 +614,7 @@ public class Checkers
           RedTurn = false;
           ResetHighlight();
           MakeMove(x, y, row, col);
+          CServer2.Send();
         }else
         {
           if(x == row && y == col)
@@ -670,6 +638,7 @@ public class Checkers
           RedTurn = true;
           ResetHighlight();
           MakeMove(x, y, row, col);
+          CServer2.Send();
         }else
         {
           if(x == row && y == col)
@@ -728,6 +697,11 @@ public class Checkers
         }
       }
     }
+  }
+  
+  public Board GetBoard()
+  {
+    return b;
   }
   
   public static void main(String args[])

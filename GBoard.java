@@ -24,6 +24,17 @@ public class GBoard extends JPanel
   static final int Xmax = Dimensions + 1;
   static final int Ymax = Dimensions + 23;
   int space = Dimensions / 8;
+  
+  public GBoard()
+  {
+    
+  }
+  
+  public GBoard(Board b)
+  {
+    c = new Checkers(b);
+  }
+  
   public void paint(Graphics g)
   {
     Graphics2D b = (Graphics2D) g;
